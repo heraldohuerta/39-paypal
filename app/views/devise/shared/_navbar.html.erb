@@ -1,0 +1,36 @@
+<nav class="navbar fixed-top  navbar-expand-lg navbar-dark bg-dark color_bar "  style="border-bottom: 5px solid  #F0AB00;">
+   <div>
+     <a href="<%= root_path %>" class="navbar-brand">
+     <%= image_tag "logo.png", class:'img-fluid', alt:'Logo' %>
+
+     </a>
+   </div>
+
+   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+     <span class="navbar-toggler-icon"></span>
+   </button>
+
+       <div class="collapse navbar-collapse" id="navbarNav">
+         <h1 class="nav-link text-white">
+            <%= link_to 'Carrito', orders_path %>
+        </h1>
+          <ul class="navbar-nav ml-auto">
+            <% if user_signed_in? %>
+              <li class="nav-link">
+                <%= current_user.email %> /<%= current_user.first_name %><%= current_user.second_name %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'Cerrar Sesion', destroy_user_session_path, method: :delete, class: 'nav-link' %>
+              </li>
+            <% else %>
+              <li class="nav-item">
+                <%= link_to 'Iniciar Sesión', new_user_session_path, class: 'nav-link' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'Registrarse', new_user_registration_path, class: 'nav-link' %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+ </nav>
+ <div class="sticky m-5"><br><br><<br><br></div>

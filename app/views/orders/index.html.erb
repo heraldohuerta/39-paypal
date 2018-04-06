@@ -1,0 +1,29 @@
+
+<% if !@orders.empty? %>
+<h1>Su Número de Solicitud de Compra es: <%= @orders.take.master_order_id %> </h1>
+
+<div class="row">
+<% @orders.each do |p| %>
+ <div class="col-sm-3">
+  <div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="<%= p.product.photo %>" alt="Card image cap">
+    <div class="card-body text-center">
+      <h5 class="card-title"><%= p.product.name %></h5>
+      <h1 class="card-text text-danger">Cantidad:$<%= p.quantity%></h1>
+      <h1 class="card-text text-danger">Precio:$<%= p.price.to_i %></h1>
+      <h1 class="card-text text-danger">Total:$<%= p.price.to_i * p.quantity.to_i  %></h1>
+      <%= link_to "Eliminar",  product_destroy_path(p.product.id,p.id), method: :delete, class:'btn btn-warning' %>
+    </div>
+  </div>
+  </div>
+<% end %>
+</div>
+<br>
+<h1>Total Productos:<%= @total %></h1>
+<br>
+<%= link_to 'Pagar', pagar_path(@orders.take.master_order_id), class:'btn btn-primary'  %>
+
+<%= link_to 'Pagar PayPal', pre_pay_billings_path, class:'btn btn-primary'  %>
+
+
+<% end %>

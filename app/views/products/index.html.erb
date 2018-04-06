@@ -1,0 +1,26 @@
+<div class="row">
+<% @productos.each do |p| %>
+ <div class="col-sm-3">
+  <div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="<%= p.photo %>" alt="Card image cap">
+    <div class="card-body text-center">
+      <h5 class="card-title"><%= p.name %></h5>
+      <h1 class="card-text text-danger">$<%= p.price %></h1>
+
+      <%= form_with(url:product_orders_path(p), local: true) do |f| %>
+      <div class="field">
+        <%= f.label :cantidad %>
+        <%= f.number_field :cantidad, id: :product_cantidad, max:999, value: 0, class:"text-right", style:'width:100px'%>
+      </div>
+
+        <%= image_tag 'glyphicons-209-cart-in.png' %>
+        <%= f.submit "+", class: 'btn btn-primary btn-lg' %>
+
+      <% end %>
+      <!-- <a href="<%= product_orders_path(p) %>" data-method = "post" class="btn btn-primary">Enviar al Carro</a> -->
+     <!-- <%= link_to 'Enviar al Carro', product_orders_path(p), method: :post, class:"btn btn-primary" %> -->
+    </div>
+  </div>
+  </div>
+<% end %>
+</div>

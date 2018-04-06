@@ -1,0 +1,15 @@
+
+
+<div class="col-sm-3">
+<div class="ml-2">
+  <div  id="list-example" class="list-group ml-2">
+    <a class="list-group-item list-group-item-action" href="<%= root_path %>">Incio</a>
+    <a class="list-group-item list-group-item-action" href="<%= edit_user_registration_path %>">Editar mi Usuario</a>
+    <% if isadmin? %>
+      <a class="list-group-item list-group-item-action" href="<%= users_path %>">Administración Usuario</a>
+    <% end %>
+    <%= link_to 'Cerrar sesión', destroy_user_session_path, method: :delete,class:"list-group-item list-group-item-action" %>
+    <!-- <a class="list-group-item list-group-item-action" href="#list-item-4">Cerrar Sesión</a> -->
+  </div>
+</div>
+</div>
